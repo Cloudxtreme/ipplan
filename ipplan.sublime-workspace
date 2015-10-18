@@ -1,0 +1,898 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"net",
+				"netaddr_extensions	module"
+			],
+			[
+				"as",
+				"as_view"
+			],
+			[
+				"Export",
+				"ExportView	class"
+			],
+			[
+				"Netwo",
+				"NetworkModelForm	class"
+			],
+			[
+				"add",
+				"address_range	module"
+			],
+			[
+				"Net",
+				"NetworkModelForm	class"
+			],
+			[
+				"Validate",
+				"ValidateInNetwork	class"
+			],
+			[
+				"range",
+				"range_in_range	function"
+			],
+			[
+				"Parent",
+				"ParentNetwork"
+			],
+			[
+				"Vali",
+				"ValidateOverlaps	class"
+			],
+			[
+				"vali",
+				"validate_cidr	function"
+			],
+			[
+				"value",
+				"value_range	statement"
+			],
+			[
+				"get",
+				"get_range"
+			],
+			[
+				"end",
+				"end_address	statement"
+			],
+			[
+				"over",
+				"ValidateOverlaps"
+			],
+			[
+				"Index",
+				"IndexError	class"
+			],
+			[
+				"Imp",
+				"ImproperlyConfigured	class"
+			],
+			[
+				"assertIS",
+				"assertIsNotNone	function"
+			],
+			[
+				"Typ",
+				"TYPES	statement"
+			],
+			[
+				"Par",
+				"ParentNetwork	class"
+			],
+			[
+				"assertIs",
+				"assertIsNone	function"
+			],
+			[
+				"IP",
+				"IPRange	class"
+			],
+			[
+				"prefix",
+				"prefix_to_hosts	function"
+			],
+			[
+				"star",
+				"start_address	statement"
+			],
+			[
+				"pref",
+				"prefix_to_hosts	function"
+			],
+			[
+				"inet",
+				"inet_ntoa	function"
+			],
+			[
+				"ModelForm",
+				"ModelForm	class"
+			],
+			[
+				"Model",
+				"ModelForm	ModelForm"
+			],
+			[
+				"get_prep",
+				"get_prep_value	function"
+			],
+			[
+				"validate",
+				"validate_prefix	function"
+			],
+			[
+				"netmas",
+				"netmask_bits	function"
+			],
+			[
+				"Min",
+				"MinValueValidator	class"
+			],
+			[
+				"Smal",
+				"PositiveSmallIntegerField"
+			],
+			[
+				"ver",
+				"verbose_name"
+			],
+			[
+				"v",
+				"vlan_number"
+			],
+			[
+				"verbo",
+				"verbose_name_plural"
+			],
+			[
+				"Add",
+				"AddrFormatError	class"
+			],
+			[
+				"Networ",
+				"NetworkObjectModelMixin	class"
+			],
+			[
+				"Netw",
+				"NetworkObjectModelMixin	class"
+			],
+			[
+				"help",
+				"help_text	param"
+			],
+			[
+				"IPAdd",
+				"GenericIPAddressField"
+			],
+			[
+				"Integer",
+				"PositiveSmallIntegerField"
+			],
+			[
+				"verbose_n",
+				"verbose_name_plural"
+			],
+			[
+				"py",
+				"python_2_unicode_compatible	function"
+			],
+			[
+				"verb",
+				"verbose_name_plural"
+			],
+			[
+				"Mo",
+				"Model_full	Model (full)"
+			],
+			[
+				"Man",
+				"ManyToManyField	class"
+			],
+			[
+				"Ma",
+				"MaxValueValidator	class"
+			],
+			[
+				"Posi",
+				"PositiveSmallIntegerField	class"
+			],
+			[
+				"Posit",
+				"PositiveSmallIntegerField	class"
+			],
+			[
+				"m",
+				"mauto	AutoField (mauto)"
+			],
+			[
+				"django",
+				"django_mailbox	module"
+			],
+			[
+				"Mod",
+				"Model	Model"
+			],
+			[
+				"DateF",
+				"DateTimeField	class"
+			],
+			[
+				"mpos",
+				"mpossmallint	PositiveSmallIntegerField (mpossmallint)"
+			],
+			[
+				"ug",
+				"ugettext_lazy	statement"
+			],
+			[
+				"min",
+				"mint	IntegerField (mint)"
+			],
+			[
+				"Title",
+				"TitleSlugDescriptionModel	class"
+			],
+			[
+				"network",
+				"network_final	statement"
+			],
+			[
+				"netowr",
+				"network_final	statement"
+			],
+			[
+				"No",
+				"NoOptionError	class"
+			],
+			[
+				"NETWO",
+				"NETWORK_CHK	statement"
+			],
+			[
+				"Decim",
+				"decimal	module"
+			],
+			[
+				"max",
+				"max_length"
+			],
+			[
+				"md",
+				"mdecimal	DecimalField (mdecimal)"
+			],
+			[
+				"grow",
+				"growing_conditions"
+			],
+			[
+				"op",
+				"optimum_temp_range"
+			],
+			[
+				"opt",
+				"optimum_pH"
+			],
+			[
+				"content",
+				"content_type	param"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "example/example/settings.py",
+			"settings":
+			{
+				"buffer_size": 2655,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "import netaddr\n\nfrom django.core.exceptions import ValidationError\n\nfrom netaddr_extensions import IrregularRange\ndef validate_cidr(value):\n    \"\"\"\n    Checks whether value is in CIDR notation\n\n    Keyword arguments:\n    value -- input value from form.\n    \"\"\"\n    try:\n        network = netaddr.IPNetwork(value)\n    except netaddr.core.AddrFormatError:\n        raise ValidationError('%s is not a valid CIDR' % value)\n    # Check if host bits are set in a network that is eq or gt /24\n    netmask = network.netmask\n    if network.ip.words[3] != 0 and netmask <= netaddr.IPAddress('255.255.255.0'):\n        raise ValidationError('Host bits are set while netmask is larger than /25')\n    # Check if input CIDR is network address or a host address\n",
+			"file": "example/ipplan/validators.py",
+			"file_size": 843,
+			"file_write_time": 130892664371075209,
+			"settings":
+			{
+				"buffer_size": 745,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "example/ipplan/tests.py",
+			"settings":
+			{
+				"buffer_size": 60,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 78.0,
+		"last_filter": "newapp",
+		"selected_items":
+		[
+			[
+				"newapp",
+				"Django: New App"
+			],
+			[
+				"set vir",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"set syntax html dj",
+				"Set Syntax: HTML (Django)"
+			],
+			[
+				"set vi",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"shell",
+				"Django: Shell"
+			],
+			[
+				"runser",
+				"Django: Run Server"
+			],
+			[
+				"migra",
+				"Django: Migrate Database"
+			],
+			[
+				"makemi",
+				"Django: Make Migration"
+			],
+			[
+				"test",
+				"Django: Test All"
+			],
+			[
+				"migrat",
+				"Django: Migrate Database"
+			],
+			[
+				"make mig",
+				"Django: Make Migration"
+			],
+			[
+				"make mi",
+				"Django: Make Migration"
+			],
+			[
+				"testa",
+				"Django: Test All"
+			],
+			[
+				"tst",
+				"View: Toggle Status Bar"
+			],
+			[
+				"custom",
+				"Django: Custom Command"
+			],
+			[
+				"migr",
+				"Django: Migrate Database"
+			],
+			[
+				"make m",
+				"Django: Make Migration"
+			],
+			[
+				"testall",
+				"Django: Test All"
+			],
+			[
+				"testal",
+				"Django: Test All"
+			],
+			[
+				"te",
+				"Django: Test All"
+			],
+			[
+				"test all",
+				"Django: Test All"
+			],
+			[
+				"test ",
+				"Django: Test All"
+			],
+			[
+				"set virtu",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"set virtual",
+				"Django: Set Virtual Environment"
+			],
+			[
+				"migrate",
+				"Django: Migrate Database"
+			],
+			[
+				"new app",
+				"Django: New App"
+			],
+			[
+				"pip inst",
+				"Django: Pip Install Packages"
+			],
+			[
+				"pip ins",
+				"Django: Pip Install Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ma",
+				"Django: Make Migration"
+			],
+			[
+				"make",
+				"Django: Make Migration"
+			],
+			[
+				"make migration",
+				"Django: Make Migration"
+			],
+			[
+				"pip instl",
+				"Django: Pip Install Packages"
+			],
+			[
+				"set syntax python",
+				"Set Syntax: Python"
+			],
+			[
+				"set syntax djan",
+				"Set Syntax: Python (Django)"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"set ",
+				"Set Syntax: Python"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"upperca",
+				"Convert Case: Upper Case"
+			],
+			[
+				"set syntax py",
+				"Set Syntax: Python"
+			],
+			[
+				"upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"convert",
+				"Convert Case: Lower Case"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"con",
+				"Convert Case: Upper Case"
+			],
+			[
+				"conv",
+				"Convert Case: Upper Case"
+			],
+			[
+				"set syntax html",
+				"Set Syntax: HTML (Django)"
+			],
+			[
+				"run",
+				"Django: Run Server"
+			],
+			[
+				"pip install",
+				"Django: Pip Install Packages"
+			],
+			[
+				"set syntax pyth	",
+				"Set Syntax: Python"
+			],
+			[
+				"pip insta",
+				"Django: Pip Install Packages"
+			],
+			[
+				"mak",
+				"Django: Make Migration"
+			],
+			[
+				"migrate data",
+				"Django: Migrate Database"
+			],
+			[
+				"makmi",
+				"Django: Make Migration"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"package ",
+				"Package Control: Install Package"
+			],
+			[
+				"pci",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"package control install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 457.0
+	},
+	"console":
+	{
+		"height": 132.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/michael/Project/ipplan",
+		"/home/michael/Project/ipplan/example",
+		"/home/michael/Project/ipplan/example/ipplan"
+	],
+	"file_history":
+	[
+		"/home/michael/Project/ipplan/ipplan.sublime-project",
+		"/tmp/fz3temp-1/urls.py",
+		"/tmp/fz3temp-1/exports.html",
+		"/tmp/fz3temp-1/admin.py",
+		"/tmp/fz3temp-1/models.py",
+		"/tmp/fz3temp-1/views.py",
+		"/tmp/fz3temp-1/models 2.py",
+		"/tmp/fz3temp-1/index.html",
+		"/home/michael/Project/Tickets/example/templates/index.html",
+		"/home/michael/Project/Tickets/example/tickets/models.py",
+		"/home/michael/Project/Tickets/example/tickets/forms.py",
+		"/home/michael/Project/Tickets/example/ipplan/admin.py",
+		"/home/michael/Project/Tickets/example/ipplan/mixins.py",
+		"/home/michael/Project/Tickets/requirements.txt",
+		"/home/michael/Project/Tickets/example/ipplan/models.py",
+		"/home/michael/Project/ipplan/example/ipplan/forms.py",
+		"/home/michael/Project/ipplan/example/ipplan/tests/test_forms.py",
+		"/home/michael/Project/ipplan/example/ipplan/utils.py",
+		"/home/michael/Project/ipplan/example/ipplan/tests/test_models.py",
+		"/home/michael/Project/ipplan/example/ipplan/mixins.py",
+		"/home/michael/Project/ipplan/example/ipplan/validators.py",
+		"/home/michael/Project/ipplan/example/ipplan/tests/test_validators.py",
+		"/home/michael/Project/ipplan/example/ipplan/models.py",
+		"/home/michael/Project/ipplan/example/ipplan/tests/test_mixins.py",
+		"/home/michael/Project/ipplan/example/ipplan/fields.py",
+		"/home/michael/Project/ipplan/example/ipplan/tests/__init__.py",
+		"/home/michael/Project/ipplan/example/ipplan/views.py",
+		"/home/michael/Project/ipplan/example/ipplan/admin.py",
+		"/home/michael/Project/ipplan/example/manage.py",
+		"/home/michael/Project/ipplan/example/example/wsgi.py",
+		"/home/michael/Project/ipplan/example/example/settings.py",
+		"/home/michael/Project/ipplan/.gitignore",
+		"/home/michael/Project/cci-crm/cci_crm/cci_crm/settings.py",
+		"/home/michael/Project/cci-crm/cci_crm/ipplan/tests.py",
+		"/home/michael/Project/cci-crm/cci_crm/tickets/tests/test_models.py",
+		"/home/michael/Project/cci-crm/cci_crm/ipplan/models.py",
+		"/home/michael/Project/cci-crm/cci_crm/tickets/models.py",
+		"/home/michael/Project/cci-crm/cci_crm/tickets/migrations/0002_auto_20150905_2328.py",
+		"/home/michael/Project/cci-crm/cci_crm/tickets/tests.py",
+		"/home/michael/.config/sublime-text-3/Packages/User/Python Django.sublime-settings",
+		"/home/michael/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/michael/Project/cci-crm/crm.sublime-project",
+		"/home/michael/.config/sublime-text-3/Packages/User/DjangoCommands.sublime-settings",
+		"/home/michael/.config/sublime-text-3/Packages/User/Python.sublime-settings",
+		"/home/michael/Project/cci_crm/tickets/models.py",
+		"/home/michael/.config/sublime-text-3/Packages/User/Anaconda.sublime-settings",
+		"/home/michael/Project/ipcrawl/ipcrawl.py",
+		"/home/michael/Project/ipcrawl/README.md",
+		"/home/michael/Project/ipcrawl/ipcrawl/urls.py",
+		"/home/michael/Project/nicki/nicki/nicki/settings.py",
+		"/home/michael/Project/nicki/nicki/templates/_layouts/flowers.html",
+		"/home/michael/Project/nicki/nicki/templates/flowers/flower_create_form.html",
+		"/home/michael/Project/nicki/nicki/flowers/tests.py",
+		"/home/michael/Project/nicki/nicki/flowers/admin.py",
+		"/home/michael/Project/nicki/nicki/nicki/urls.py",
+		"/home/michael/Project/nicki/nicki/flowers/models.py",
+		"/home/michael/Project/nicki/nicki/public/media/orchid_g6LeKCf.jpg",
+		"/home/michael/Project/nicki/nicki/flowers/signals.py",
+		"/home/michael/Project/nicki/nicki/flowers/apps.py",
+		"/home/michael/Project/nicki/nicki/flowers/__init__.py",
+		"/home/michael/Project/nicki/nicki/flowers/views.py",
+		"/home/michael/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/michael/.config/sublime-text-3/Packages/Django Manage Commands/DjangoCommands.sublime-settings",
+		"/home/michael/.config/sublime-text-3/Packages/User/LiveReload.sublime-settings"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"h3",
+			" <p>{{ ticket.description }}</p>\n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th>Task Name</th>\n          <th>Description</th>\n          <th>Solution</th>",
+			"th>\n        </tr>\n      </thead>\n    </table>\n    {% endfor %}",
+			"\n  </head>\n  <body>\n    {% for ticket in tickets %}\n    <h3>{{ ticket.title }}</h3>\n    <p>{{ ticket.description }}</p>\n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th>Task Name</th>\n          <th>Description</th>",
+			"ion }}</p>\n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th>Task Name</th>\n          <th>Description</th>\n          <th>Solution</th>",
+			"cls",
+			"network",
+			"networkmixin",
+			"netmaskfield",
+			"mixin",
+			"mimxin",
+			"NetworkObjectModelMixin",
+			"__unicode__",
+			"dist",
+			"Popen",
+			"'local'",
+			"parser",
+			"ipaddress.",
+			"ipaddress",
+			"local_network",
+			"local_network_chk",
+			"LOCAL_NETWORK",
+			"LOCAL_NETWORK_CHK",
+			"99"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "example/example/settings.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2655,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1079,
+								1079
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "example/ipplan/validators.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								98,
+								98
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"incomplete_sync": null,
+							"open_with_edit": true,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "example/ipplan/tests.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 60,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ipplan.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 195.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
